@@ -1,0 +1,60 @@
+<div class="context">
+  <div class="container1">
+    <div class="chatbox" style="width: 100%; display: flex;">
+      <div class="query-bar" style="padding: 1%; width: 50%;margin-right: 18px;">
+        <p style="font-weight: bold;">Prompt Text</p>
+        <div class="loader" *ngIf="loading">
+          <span class="load"></span>
+        </div>
+        <div *ngIf="!loading" style="height: 80%;">{{data?.prompt}}</div>
+      </div>
+      <div class="query-bar" style="padding: 1%; width: 50%;">
+        <p style="font-weight: bold;">Upload File(Excel or CSV)</p>
+        <input class="fileUpload" type="file" name="file" #fileInput>
+        <button type="submit" (click)="onFileSelect()"><i class="fa fa-cloud-upload" aria-hidden="true"></i></button>
+        <p style="color: green;" *ngIf="fileUploaded">{{successMsg}}</p>
+      </div>
+      <!-- <div class="query-bar" style=" align-items: center; padding: 1%; width: 20%; margin-left: 18px;">
+        <div style="display: flex;font-weight: bold;">
+          <p>Select Type</p>
+        </div>
+        <div style="display: flex;
+        align-items: center;
+        justify-content: flex-end;margin-top: 3%;">
+          <div style="flex: 1;">
+            <label style="float: left; margin-right: 5px;font-weight: bold;">CSV File</label>
+          </div>
+          <div style="flex: 1;">
+            <label class="toggle">
+              <input type="checkbox" [(ngModel)]="isMemoryOn" (change)="onChangeToggle($event)">
+              <span class="slider"></span>
+            </label>
+          </div>
+          <div style="flex: 1;">
+            <label style="float: right; margin-left: 5px;font-weight: bold;">Memory</label>
+          </div>
+        </div>
+      </div> -->
+    </div>
+  </div>
+  <div class="container">
+    <div class="chatbox">
+      <div class="middle scroll">
+        <div class="bubble" id="summaryData">{{data?.summaryDataArray}}</div>
+      </div>
+      <div class="bottom-bar">
+        <div class="chat">
+          <input type="text" placeholder="Ask me anything..." [(ngModel)]="prompt">
+          <button (click)="bindingData()" style="position: absolute;"><i class="fa fa-paper-plane"></i></button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- <div class="loader" *ngIf="loading">
+          <span class="load"></span>
+        </div>
+        <button (click)="onFileSelect($event)">Upload</button> -->
+<!-- <input type="file" accept=".xlsx, .xls" #fileInput style="display:none"/> -->
